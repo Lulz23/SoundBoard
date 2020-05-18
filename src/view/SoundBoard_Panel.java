@@ -2,8 +2,10 @@ package view;
 
 import javax.swing.*;
 
+import java.awt.event.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import controller.SoundBoard_Controller;
 
@@ -27,6 +29,19 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 	private JButton soundButton2;
 	private JButton soundButton3;
 	private JButton soundButton4;	
+	
+	AudioInputStream ais;
+	AudioInputStream s;
+	Clip clip;
+	Clip clip2;
+	Clip clip3;
+	
+	File a;
+	File b;
+	File c;
+	File d;
+	File e;
+	
 	
 	public SoundBoard_Panel(SoundBoard_Controller controller)
 	{
@@ -62,17 +77,34 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 	
 	public void setupListener()
 	{
-		soundButton0.addActionListener(new ActionListener()
+		try 
 		{
-			public void actionPerformed(ActionEvent click)
-			{
-				
-				try 
-				{
-					soundButton0 = new File("src/");
-				}
-			}
-			});
+			soundButton0.addActionListener(this);
+			a = new File("src/sounds/sound0.wav");
+			ais = AudioSystem.getAudioInputStream(a);
+			clip = AudioSystem.getClip();
+			clip.open(ais);
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		try 
+		{
+			soundButton1.addActionListener(this);
+			b = new File("src/sounds/sound1.wav");
+			s = AudioSystem.getAudioInputStream(b);
+			clip2 = AudioSystem.getClip();
+			clip2.open(s);
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	
 	}
 	
 	public void setupLayout()
@@ -80,10 +112,41 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 		
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	
+	public void actionPerformed(ActionEvent evt) 
+	{
+		if(evt.getSource() == soundButton0)
+		{
+			try 
+			{
+				clip2.start();
+				clip2.setFramePosition(0);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		
+		}
 		
 	}
 	
+	
+	public void actionPerformed1(ActionEvent evt) 
+	{
+		if(evt.getSource() == soundButton1)
+		{
+			try 
+			{
+				clip2.start();
+				clip2.setFramePosition(0);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		
+		}
+		
+	}
 }
