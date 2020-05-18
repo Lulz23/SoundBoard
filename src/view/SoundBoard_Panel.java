@@ -12,7 +12,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 
-public class SoundBoard_Panel extends JPanel
+public class SoundBoard_Panel extends JPanel implements ActionListener
 {
 	/**
 	 * Constructor for SoundBoard Panel
@@ -66,14 +66,23 @@ public class SoundBoard_Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-			
 				
+				try 
+				{
+					soundButton0 = new File("src/");
+				}
 			}
 			});
 	}
 	
 	public void setupLayout()
 	{
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	
