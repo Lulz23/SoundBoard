@@ -4,6 +4,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+
 import view.SoundBoard_Panel;
 import view.SoundBoard_Frame;
 
@@ -12,8 +13,14 @@ public class SoundBoard_Controller {
 	
 	
 	
+	
+	
 	public void start()
 	{
+		
+		
+		
+		
 		
 	}
 
@@ -22,8 +29,10 @@ public class SoundBoard_Controller {
 	public SoundBoard_Controller()
 	{
 		appFrame = new SoundBoard_Frame(this);
+	
+		
 	}
 
-	
+
 	
 }
