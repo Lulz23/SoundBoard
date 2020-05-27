@@ -1,18 +1,24 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
+
+import javax.swing.JTextArea;
 
 public class SoundBoard_Phrases {
 
 	private String [] phrasesArray;
-	
+	private ArrayList<String> respondList;
+	private ArrayList<String> replies;
 	
 	
 	public SoundBoard_Phrases(String phrases)
 	{
 		this.phrasesArray = new String [7];
-	
+		this.respondList = new ArrayList <String>();
+		this.replies = new ArrayList <String>();
 		
+	
 		
 		setupPharses();
 	}
@@ -29,18 +35,20 @@ public class SoundBoard_Phrases {
 		this.phrasesArray[6] = "This will need work";
 	}
 	
-	public String render()
+	public String render(String texts)
 	{
-		String respond = "";
+		String respond = " ";
 		
-		int randomPhrase = (int) (Math.random() * phrasesArray.length);
+		respondList.add(texts);
 		
-		randomPhrase = (int) (Math.random()* phrasesArray.length);
+		int randomIndex = (int) (Math.random()* phrasesArray.length);
 		
+		replies.add(respond);
 		
 		return respond;
-		
 	}
-	
+
+
+
 	
 }

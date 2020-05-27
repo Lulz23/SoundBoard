@@ -3,6 +3,8 @@ package controller;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import model.SoundBoard_Phrases;
 
@@ -33,19 +35,20 @@ public class SoundBoard_Controller {
 	{
 		appFrame = new SoundBoard_Frame(this);
 	
-		
+		phrases = new SoundBoard_Phrases("idk");
 		
 	}
 
 
-	public String randomPhrases(String text)
+	public String randomPhrases(String texts)
 	{
 		String output = "";
 		
-		output = phrases.render();
+		output = phrases.render(texts);
 		return output;
 		
 		
 	}
+
 	
 }

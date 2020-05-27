@@ -21,28 +21,28 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 	 * 
 	 * 
 	 */
-	private SoundBoard_Controller controller;
+	private SoundBoard_Controller app;
 	private SpringLayout appLayout;
 	
 	private JButton soundButton0;
 	private JButton randomButton;
 	private JTextArea texts;
-	
+	private JTextField text;
 	
 	AudioInputStream ais;
 	Clip clip;
 	
 	File a;
 	
-	public SoundBoard_Panel(SoundBoard_Controller controller)
+	public SoundBoard_Panel(SoundBoard_Controller app)
 	{
 		super();
-		this.controller = controller;
+		this.app = app;
 			
 		this.appLayout = new SpringLayout();
 		
 		this.texts = new JTextArea(20, 40);
-	
+		this.text = new JTextField("", 20);
 		this.soundButton0 = new JButton("Sound 1");
 		this.randomButton = new JButton("Random Button");
 		
@@ -123,11 +123,12 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 	}
 	private void updateScreen()
 	{
-		String text = texts.getText();
+		String phrases = text.getText();
 		texts.setText("");
+		String response = app.randomPhrases(phrases);
+		texts.append(response);;
 		
-		String respond = controller.randomPhrases(text);
-		
+		texts.setCaretPosition(texts.getSelectionEnd());
 		
 	}
 }
