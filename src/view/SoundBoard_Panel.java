@@ -26,6 +26,7 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 	
 	private JButton soundButton0;
 	private JButton randomButton;
+	private JTextArea texts;
 	
 	
 	AudioInputStream ais;
@@ -39,9 +40,12 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 		this.controller = controller;
 			
 		this.appLayout = new SpringLayout();
+		
+		this.texts = new JTextArea(20, 40);
 	
 		this.soundButton0 = new JButton("Sound 1");
 		this.randomButton = new JButton("Random Button");
+		
 		
 		setupPanel();
 		setupLayout();
@@ -55,14 +59,26 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 	
 		this.add(soundButton0);
 		this.add(randomButton);
+		this.add(texts);
 	}	
 	
 	public void setupListener()
 	{
 		/**
 		 * This adds sounds to the sound buttons
-		 * 
+		 * This also adds the random phrases from the random phrases model.
 		 */
+		
+		
+		randomButton.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent click) {
+						
+						
+						updateScreen();
+					}
+				});
+		
 		try 
 		{
 			soundButton0.addActionListener(this);
@@ -76,7 +92,7 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 		{
 			e.printStackTrace();
 		}
-	
+		
 	}
 	
 	public void setupLayout()
@@ -87,6 +103,9 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 	
 	public void actionPerformed(ActionEvent evt) 
 	{
+		
+		
+		
 		if(evt.getSource() == soundButton0)
 		{
 			try 
@@ -102,5 +121,13 @@ public class SoundBoard_Panel extends JPanel implements ActionListener
 		}
 		
 	}
-	
+	private void updateScreen()
+	{
+		String text = texts.getText();
+		texts.setText("");
+		
+		String respond = controller.randomPhrases(text);
+		
+		
+	}
 }
